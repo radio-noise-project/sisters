@@ -1,0 +1,27 @@
+linters:
+  enable-all: true
+  disable:
+     - gomnd  #deprecated
+     - execinquery #deprecated
+     - exportloopref #deprecated
+
+     - depguard
+     - exhaustruct
+     - forbidigo
+     - testpackage
+
+linters-settings:
+  gci:
+    sections:
+      - standard
+      - default
+      - prefix(github.com/radio-noise-project/sisters)
+      - blank
+      - dot
+  varnamelen:
+    ignore-decls:
+      - e *echo.Echo
+      - c echo.Context
+  wrapcheck:
+    ignoreSigs:
+      - .JSON(
