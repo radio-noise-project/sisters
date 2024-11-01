@@ -11,6 +11,8 @@ services:
       - ./cmd/sisters:/go/src/app/cmd/
       - ./pkg:/go/src/app/pkg/
       - ./internal:/go/src/app/internal/
+      - ./docker/images:/go/src/docker/images/
+      - /var/run/docker.sock:/var/run/docker.sock
     hostname: backend
     restart: always
     tty: true
