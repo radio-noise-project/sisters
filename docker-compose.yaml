@@ -10,6 +10,7 @@ services:
     volumes:
       - ./cmd/sisters:/go/src/app/cmd/
       - ./pkg:/go/src/app/pkg/
+      - ./internal:/go/src/app/internal/
     hostname: backend
     restart: always
     tty: true
