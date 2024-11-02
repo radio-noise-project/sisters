@@ -8,11 +8,9 @@ import (
 	"log"
 	"log/slog"
 	"os"
-	"path/filepath"
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
-	"github.com/docker/docker/api/types/mount"
 	"github.com/docker/docker/client"
 )
 
@@ -29,16 +27,18 @@ func ContainerCreateAndStart() int {
 	}
 	cli.NegotiateAPIVersion(ctx)
 
-	imagefilename := "judge-server:" + DOCKERFILE_NAME
+	imagefilename := "nvcr.io/nvidia/cuda:" + "11.1.1-cudnn8-runtime"
 
 	// If need environmental value, Please write below.
 	envvalue1 := "ENV_VALUE=TEST"
 
-	absolutePath, err := filepath.Abs("../../docker/images/")
-	if err != nil {
-		panic(err)
-	}
-	sourcepath := absolutePath + "/"
+	/*
+		absolutePath, err := filepath.Abs("../docker/images/workspace/")
+		if err != nil {
+			panic(err)
+		}
+		sourcepath := absolutePath + "/"
+	*/
 
 	resp, err := cli.ContainerCreate(
 		ctx,
@@ -47,15 +47,7 @@ func ContainerCreateAndStart() int {
 			Cmd:   []string{},
 			Env:   []string{envvalue1},
 			Tty:   false,
-		}, &container.HostConfig{
-			Mounts: []mount.Mount{
-				{
-					Type:   mount.TypeBind,
-					Source: sourcepath,
-					Target: "/workspace",
-				},
-			},
-		}, nil, nil, "")
+		}, nil, nil, nil, "")
 	if err != nil {
 		panic(err)
 	}
@@ -131,7 +123,7 @@ func buildDockerfile(jobname string) {
 func getArchivedDockerfile(dockerfile string) *bytes.Reader {
 	// read the Dockerfile
 
-	filepath := "../../docker/images/" + dockerfile
+	filepath := "../docker/images/" + dockerfile
 	f, err := os.Open(filepath)
 	if err != nil {
 		log.Panic(err)
