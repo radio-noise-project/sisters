@@ -2,7 +2,10 @@ module github.com/radio-noise-project/sisters
 
 go 1.22.3
 
-require github.com/docker/docker v27.3.1+incompatible
+require (
+	github.com/docker/docker v27.3.1+incompatible
+	github.com/facebookgo/symwalk v0.0.0-20150726040526-42004b9f3222
+)
 
 require (
 	github.com/Microsoft/go-winio v0.4.14 // indirect
@@ -10,6 +13,10 @@ require (
 	github.com/distribution/reference v0.6.0 // indirect
 	github.com/docker/go-connections v0.5.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
+	github.com/facebookgo/ensure v0.0.0-20200202191622-63f1cf65ac4c // indirect
+	github.com/facebookgo/stack v0.0.0-20160209184415-751773369052 // indirect
+	github.com/facebookgo/subset v0.0.0-20200203212716-c811ad88dec4 // indirect
+	github.com/facebookgo/testname v0.0.0-20150612200628-5443337c3a12 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
