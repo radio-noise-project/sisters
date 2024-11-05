@@ -5,11 +5,13 @@ go 1.22.3
 require (
 	github.com/docker/docker v27.3.1+incompatible
 	github.com/facebookgo/symwalk v0.0.0-20150726040526-42004b9f3222
+	github.com/labstack/echo v3.3.10+incompatible
 )
 
 require (
 	github.com/Microsoft/go-winio v0.4.14 // indirect
 	github.com/containerd/log v0.1.0 // indirect
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/distribution/reference v0.6.0 // indirect
 	github.com/docker/go-connections v0.5.0 // indirect
 	github.com/docker/go-units v0.5.0 // indirect
@@ -21,8 +23,6 @@ require (
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
-	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
-	github.com/labstack/echo/v4 v4.12.0 // indirect
 	github.com/labstack/gommon v0.4.2 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect
