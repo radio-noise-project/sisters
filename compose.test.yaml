@@ -1,0 +1,21 @@
+services:
+  test:
+    build:
+      context: .
+      dockerfile: ./docker/test/Dockerfile
+    container_name: sisters-api-test
+    volumes:
+      - ./cmd/sisters:/go/src/app/cmd/
+      - ./pkg:/go/src/app/pkg/
+      - ./internal:/go/src/app/internal/
+      - ./docker/images:/go/src/app/docker/images/
+      - /var/run/docker.sock:/var/run/docker.sock
+    hostname: backend-test
+    restart: no
+    tty: false
+    ports:
+      - 8080:8081
+
+networks:
+  sisters-network:
+    driver: bridge
