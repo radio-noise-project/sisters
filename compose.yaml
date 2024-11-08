@@ -5,12 +5,13 @@ services:
       dockerfile: ./docker/api/Dockerfile
     container_name: sisters-api
     volumes:
-      - ./cmd/sisters:/go/src/app/cmd/
-      - ./pkg:/go/src/app/pkg/
-      - ./internal:/go/src/app/internal/
-      - ./docker/images:/go/src/app/docker/images/
+      - ./cmd/sisters:/go/src/cmd/
+      - ./pkg:/go/src/pkg/
+      - ./internal:/go/src/internal/
+      - ./tmp/:/go/src/tmp/
+      
       - /var/run/docker.sock:/var/run/docker.sock
-    hostname: backend
+    hostname: sisters-api
     restart: unless-stopped
     tty: true
     ports:
