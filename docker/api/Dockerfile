@@ -11,5 +11,5 @@ COPY go.sum ./go.sum
 RUN apk update && apk add git
 RUN go mod download
 
-WORKDIR /go/src/cmd
+WORKDIR /go/src/cmd/sisters
 CMD [ "go" , "run" , "./main.go" ]

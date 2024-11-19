@@ -5,7 +5,7 @@ services:
       dockerfile: ./docker/test/Dockerfile
     container_name: sisters-api-test
     volumes:
-      - ./cmd/sisters:/go/src/cmd/
+      - ./cmd/sisters:/go/src/cmd/sisters/
       - ./pkg:/go/src/pkg/
       - ./internal:/go/src/internal/
       - ./test/:/go/src/tmp/
