@@ -13,7 +13,7 @@ func Server() {
 	e.Use(middleware.Recover())
 
 	// Define APIs
-	e.GET("/v0/docker/version", handler.OutputSistersVersion)
+	e.GET("/v0/runtime/version", handler.OutputSistersVersion)
 
 	// Listen at 8080 port
 	e.Logger.Fatal(e.Start(":8080"))
