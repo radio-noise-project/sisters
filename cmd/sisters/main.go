@@ -3,10 +3,10 @@ package main
 import (
 	"log/slog"
 
-	"github.com/radio-noise-project/sisters/internal/api"
+	"github.com/radio-noise-project/sisters/internal/api/server"
 )
 
 func main() {
 	slog.Info("Start sisters")
-	api.Server()
+	server.Start()
 }
