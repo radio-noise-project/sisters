@@ -3,9 +3,11 @@ module github.com/radio-noise-project/sisters
 go 1.22.3
 
 require (
+	github.com/BurntSushi/toml v1.4.0
 	github.com/docker/docker v27.3.1+incompatible
 	github.com/facebookgo/symwalk v0.0.0-20150726040526-42004b9f3222
 	google.golang.org/grpc v1.67.1
+	google.golang.org/protobuf v1.35.2
 )
 
 require (
@@ -39,6 +41,5 @@ require (
 	golang.org/x/text v0.19.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241007155032-5fefd90f89a9 // indirect
-	google.golang.org/protobuf v1.35.1 // indirect
 	gotest.tools/v3 v3.5.1 // indirect
 )
