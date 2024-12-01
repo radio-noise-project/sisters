@@ -1,10 +1,10 @@
 package server
 
 import (
-	"github.com/labstack/echo"
-	"github.com/radio-noise-project/sisters/internal/api/handler"
+	"github.com/radio-noise-project/sisters/internal/api/handler/runtime"
+	"google.golang.org/grpc"
 )
 
-func router(e *echo.Echo) {
-	e.GET("/v0/runtime/version", handler.OutputSistersVersion)
+func router(s *grpc.Server) {
+	runtime.Handler(s)
 }
