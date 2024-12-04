@@ -5,18 +5,18 @@ services:
       dockerfile: ./docker/api/Dockerfile
     container_name: sisters-api
     volumes:
-      - ./cmd/sisters:/go/src/cmd/sisters
-      - ./pkg:/go/src/pkg/
-      - ./internal:/go/src/internal/
-      - ./tmp/:/go/src/tmp/
-      
+      - ./:/go/src/app
       - /var/run/docker.sock:/var/run/docker.sock
     hostname: sisters-api
     restart: unless-stopped
     tty: true
     ports:
-      - 8080:8080
+      - ${SISTERS_PORT}:8080
+    networks: 
+      - misaka-network
 
 networks:
-  sisters-network:
+  misaka-network:
     driver: bridge
+    external: true
+    name: misaka-network
