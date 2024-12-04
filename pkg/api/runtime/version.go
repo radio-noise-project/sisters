@@ -2,6 +2,7 @@ package runtime
 
 import (
 	"context"
+	"log/slog"
 	"runtime"
 
 	"github.com/BurntSushi/toml"
@@ -11,7 +12,7 @@ import (
 type versionInformation struct {
 	CodeName  string
 	Version   string
-	BuiltDate string
+	BuildDate string
 }
 
 func GetVersion() (string, string, string, string, string, string, string, string) {
@@ -20,8 +21,8 @@ func GetVersion() (string, string, string, string, string, string, string, strin
 	if err != nil {
 		panic(err)
 	}
-
-	return conf["version"].CodeName, conf["version"].Version, golangVersion(), dockerEngineVersion(), "", conf["version"].BuiltDate, getOs(), arch()
+	slog.Info("%s,%s,%s,%s,%s,%s,%s,%s", conf["version"].CodeName, conf["version"].Version, golangVersion(), dockerEngineVersion(), "", conf["version"].BuildDate, getOs(), arch())
+	return conf["version"].CodeName, conf["version"].Version, golangVersion(), dockerEngineVersion(), "", conf["version"].BuildDate, getOs(), arch()
 }
 
 func encodeToml(filePath string) (map[string]versionInformation, error) {

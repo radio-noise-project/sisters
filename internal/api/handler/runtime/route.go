@@ -2,19 +2,19 @@ package runtime
 
 import (
 	"context"
+	"log/slog"
 
-	"github.com/radio-noise-project/sisters/internal/api/pb"
 	"github.com/radio-noise-project/sisters/pkg/api/runtime"
 )
 
-type version struct {
-	pb.UnimplementedRuntimeServiceServer
+type Server struct {
 }
 
-func (s *version) GetVersion(ctx context.Context, req *pb.VersionRequest) (*pb.VersionResponse, error) {
+func (s *Server) Version(ctx context.Context) (*VersionResponse, error) {
+	slog.Info("GetVersion called")
 	codeName, version, golanVersion, dockerEngineVersion, builtGitCommitHash, builtDate, os, arch := runtime.GetVersion()
 
-	return &pb.VersionResponse{
+	return &VersionResponse{
 		CodeName:            codeName,
 		Version:             version,
 		GolangVersion:       golanVersion,
@@ -24,8 +24,4 @@ func (s *version) GetVersion(ctx context.Context, req *pb.VersionRequest) (*pb.V
 		Os:                  os,
 		Arch:                arch,
 	}, nil
-}
-
-func server() *version {
-	return &version{}
 }
