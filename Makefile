@@ -21,10 +21,10 @@ stop-development:
 .PHONY: protoc
 protoc:
 	docker build -t rnp/protobuf -f docker/development/protobuf/Dockerfile .
-	docker run --rm -v $$PWD:/work -w /work rnp/protobuf \
-	protoc --go_out=internal/api/handler --go_opt=paths=source_relative \
-	--go-grpc_out=internal/api/handler --go-grpc_opt=paths=source_relative \
-	internal/api/proto/runtime/version.proto
+	docker run --rm -v $$PWD:/work -w /work/internal/api/proto rnp/protobuf \
+	protoc --go_out=../runtime --go_opt=paths=source_relative \
+	--go-grpc_out=../runtime --go-grpc_opt=paths=source_relative \
+	runtime.proto
 
 .PHONY: lint
 lint:
