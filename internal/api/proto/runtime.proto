@@ -1,0 +1,21 @@
+syntax = "proto3";
+import "google/protobuf/empty.proto";
+
+option go_package = "../handler/runtime";
+
+package runtime;
+
+service RuntimeService {
+	rpc Version (google.protobuf.Empty) returns (VersionResponse); 
+}
+
+message VersionResponse {
+	string codeName = 1;
+	string version = 2;
+	string golangVersion = 3;
+	string DockerEngineVersion = 4;
+	string builtGitcommitHash = 5;
+	string builtDate = 6;
+	string os = 7;
+	string arch = 8;
+}
