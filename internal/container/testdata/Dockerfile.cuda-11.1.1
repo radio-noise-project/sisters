@@ -1,7 +1,0 @@
-FROM nvcr.io/nvidia/cuda:11.1.1-cudnn8-runtime
-
-COPY /volume /workspace
-WORKDIR /workspace
-RUN ls
-RUN cat ./sample/sample.txt
-RUN cat ./sample2/sample2.txt
