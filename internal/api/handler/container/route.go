@@ -3,7 +3,8 @@ package container
 import (
 	"io"
 	"log/slog"
-	"os"
+
+	"github.com/radio-noise-project/sisters/pkg/api/container"
 )
 
 type Server struct {
@@ -26,18 +27,6 @@ func (s *Server) Upload(stream ContainerService_UploadServer) error {
 		slog.Info("Received chunk of data")
 	}
 
-	filePath := "archive.tar.gz"
-	file, err := os.Create(filePath)
-	if err != nil {
-		return err
-	}
-	defer file.Close()
-
-	_, err = file.Write(data)
-	if err != nil {
-		return err
-	}
-
-	slog.Info("Upload completed")
+	container.ContainerCreateAndStart(data)
 	return stream.SendAndClose(&StatusResponse{Status: "Success"})
 }
