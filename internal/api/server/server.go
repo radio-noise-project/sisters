@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/signal"
 
+	"github.com/radio-noise-project/sisters/internal/api/handler/container"
 	"github.com/radio-noise-project/sisters/internal/api/handler/runtime"
 	runtimePkg "github.com/radio-noise-project/sisters/pkg/api/runtime"
 	"google.golang.org/grpc"
@@ -25,6 +26,7 @@ func Start() {
 	grpcServer := grpc.NewServer()
 	reflection.Register(grpcServer)
 	runtime.RegisterRuntimeServiceServer(grpcServer, &Server{})
+	container.RegisterContainerServiceServer(grpcServer, &container.Server{})
 	if err := grpcServer.Serve(listener); err != nil {
 		panic(err)
 	}

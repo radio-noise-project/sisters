@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+option go_package = "../handler/container";
+
+package container;
+
+service ContainerService{
+    rpc Create (DockerfileRequest) returns (StatusResponse);
+    rpc Upload (stream UploadArchiveRequest) returns (StatusResponse);
+    rpc Start (ContainerRequest) returns (stream ContainerStatusResponse);
+}
+
+message ContainerStatusResponse{
+    string status = 1;
+    oneof response{
+        string log = 2;
+        bytes model = 3;
+    }
+}
+
+message StatusResponse{
+    string status = 1;
+}
+
+message DockerfileRequest{
+    bytes dockerfileArchive = 1;
+}
+
+message UploadArchiveRequest{
+    bytes archive = 1;
+}
+
+message ContainerRequest{
+    string imageName = 1;
+}
